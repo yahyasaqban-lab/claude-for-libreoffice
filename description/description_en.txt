@@ -1,0 +1,25 @@
+Claude for LibreOffice
+
+Use Claude to analyze, edit, and create spreadsheets. Purpose-built AI integration for LibreOffice Calc.
+
+Features:
+- Analyze selected cells and get insights about your data
+- Explain complex formulas step by step
+- Chat with Claude about your spreadsheet
+- Get suggestions for improvements and new formulas
+
+Professionals who work extensively with spreadsheets can use Claude for LibreOffice to collaborate with Claude directly where they work.
+
+Claude for LibreOffice accelerates spreadsheet work through intelligent assistance. It reads complex multi-tab workbooks, explains calculations with cell-level citations, and helps you understand and modify your data.
+
+Whether you're debugging errors, building new models, or analyzing existing data, Claude maintains full transparency by providing clear explanations at every step.
+
+Requirements:
+- LibreOffice 7.0 or later
+- Python 3.8 or later
+- Anthropic API key (get one at https://console.anthropic.com)
+
+Configuration:
+Your API key is stored locally in ~/.config/claude-libreoffice/config.json
+
+For support, visit: https://claude.ai
