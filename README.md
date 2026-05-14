@@ -125,8 +125,34 @@ Example prompts:
 ## Requirements
 
 - LibreOffice 7.0+ (tested on 25.8)
-- Python 3.8+ (bundled with LibreOffice)
+- **LibreOffice Python scripting support** (see installation below)
 - Anthropic API key ([get one here](https://console.anthropic.com))
+
+### Install Python Scripting Support
+
+**Ubuntu/Debian:**
+```bash
+sudo apt install libreoffice-script-provider-python python3-uno
+```
+
+**Fedora:**
+```bash
+sudo dnf install libreoffice-pyuno
+```
+
+**Arch Linux:**
+```bash
+sudo pacman -S python-uno
+```
+
+**macOS (Homebrew):**
+```bash
+# Python scripting is included in the LibreOffice package
+brew install --cask libreoffice
+```
+
+**Windows:**
+Python scripting is included by default in LibreOffice for Windows.
 
 ## Privacy
 

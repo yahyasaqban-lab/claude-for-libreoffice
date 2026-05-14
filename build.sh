@@ -10,6 +10,51 @@ VERSION="1.0.0"
 OUTPUT_NAME="claude-for-libreoffice-${VERSION}.oxt"
 
 echo "Building Claude for LibreOffice extension..."
+echo ""
+
+# Check dependencies
+echo "Checking dependencies..."
+
+check_dependency() {
+    if ! command -v "$1" &> /dev/null; then
+        echo "  [!] $1 not found"
+        return 1
+    fi
+    echo "  [✓] $1"
+    return 0
+}
+
+MISSING_DEPS=0
+
+check_dependency libreoffice || MISSING_DEPS=1
+check_dependency python3 || MISSING_DEPS=1
+check_dependency zip || MISSING_DEPS=1
+
+# Check for LibreOffice Python scripting support
+if python3 -c "import uno" 2>/dev/null; then
+    echo "  [✓] python3-uno (LibreOffice Python bridge)"
+else
+    echo "  [!] python3-uno NOT FOUND"
+    echo ""
+    echo "  LibreOffice Python scripting is required!"
+    echo "  Install with:"
+    echo "    Ubuntu/Debian: sudo apt install libreoffice-script-provider-python python3-uno"
+    echo "    Fedora:        sudo dnf install libreoffice-pyuno"
+    echo "    Arch:          sudo pacman -S python-uno"
+    echo ""
+    MISSING_DEPS=1
+fi
+
+if [ "$MISSING_DEPS" -eq 1 ]; then
+    echo ""
+    read -p "Dependencies missing. Continue anyway? [y/N] " -n 1 -r
+    echo
+    if [[ ! $REPLY =~ ^[Yy]$ ]]; then
+        exit 1
+    fi
+fi
+
+echo ""
 
 # Create lib directory and install anthropic SDK
 echo "Bundling anthropic SDK..."

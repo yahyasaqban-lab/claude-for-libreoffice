@@ -4,58 +4,78 @@
                     oor:name="Addons"
                     oor:package="org.openoffice.Office">
     <node oor:name="AddonUI">
-        <!-- Menu bar integration -->
-        <node oor:name="OfficeMenuBar">
+        <!-- Add items directly to Tools menu -->
+        <node oor:name="OfficeMenuBarMerging">
             <node oor:name="com.anthropic.claude.menu" oor:op="replace">
-                <prop oor:name="Title" oor:type="xs:string">
-                    <value xml:lang="en">Claude</value>
-                </prop>
-                <prop oor:name="Context" oor:type="xs:string">
-                    <value>com.sun.star.sheet.SpreadsheetDocument</value>
-                </prop>
-                <node oor:name="Submenu">
-                    <node oor:name="m1" oor:op="replace">
-                        <prop oor:name="URL" oor:type="xs:string">
-                            <value>vnd.sun.star.script:claude_calc.py$open_claude_sidebar?language=Python&amp;location=user:uno_packages</value>
-                        </prop>
-                        <prop oor:name="Title" oor:type="xs:string">
-                            <value xml:lang="en">Open Claude Sidebar</value>
-                        </prop>
-                    </node>
-                    <node oor:name="m2" oor:op="replace">
-                        <prop oor:name="URL" oor:type="xs:string">
-                            <value>vnd.sun.star.script:claude_calc.py$analyze_selection?language=Python&amp;location=user:uno_packages</value>
-                        </prop>
-                        <prop oor:name="Title" oor:type="xs:string">
-                            <value xml:lang="en">Analyze Selection</value>
-                        </prop>
-                    </node>
-                    <node oor:name="m3" oor:op="replace">
-                        <prop oor:name="URL" oor:type="xs:string">
-                            <value>vnd.sun.star.script:claude_calc.py$explain_formula?language=Python&amp;location=user:uno_packages</value>
-                        </prop>
-                        <prop oor:name="Title" oor:type="xs:string">
-                            <value xml:lang="en">Explain Formula</value>
-                        </prop>
-                    </node>
-                    <node oor:name="m4" oor:op="replace">
-                        <prop oor:name="URL" oor:type="xs:string">
-                            <value>private:separator</value>
-                        </prop>
-                    </node>
-                    <node oor:name="m5" oor:op="replace">
-                        <prop oor:name="URL" oor:type="xs:string">
-                            <value>vnd.sun.star.script:claude_calc.py$configure_api_key?language=Python&amp;location=user:uno_packages</value>
-                        </prop>
-                        <prop oor:name="Title" oor:type="xs:string">
-                            <value xml:lang="en">Configure API Key...</value>
-                        </prop>
+                <node oor:name="S1" oor:op="replace">
+                    <prop oor:name="MergePoint" oor:type="xs:string">
+                        <value>.uno:ToolsMenu</value>
+                    </prop>
+                    <prop oor:name="MergeCommand" oor:type="xs:string">
+                        <value>AddAfter</value>
+                    </prop>
+                    <prop oor:name="MergeFallback" oor:type="xs:string">
+                        <value>AddLast</value>
+                    </prop>
+                    <prop oor:name="MergeContext" oor:type="xs:string">
+                        <value>com.sun.star.sheet.SpreadsheetDocument</value>
+                    </prop>
+                    <node oor:name="MenuItems">
+                        <node oor:name="N001" oor:op="replace">
+                            <prop oor:name="URL" oor:type="xs:string">
+                                <value>private:separator</value>
+                            </prop>
+                        </node>
+                        <node oor:name="N002" oor:op="replace">
+                            <prop oor:name="URL" oor:type="xs:string">
+                                <value>vnd.sun.star.script:claude_calc.py$open_claude_sidebar?language=Python&amp;location=user:uno_packages</value>
+                            </prop>
+                            <prop oor:name="Title" oor:type="xs:string">
+                                <value>Claude: Open Chat...</value>
+                            </prop>
+                            <prop oor:name="Target" oor:type="xs:string">
+                                <value>_self</value>
+                            </prop>
+                        </node>
+                        <node oor:name="N003" oor:op="replace">
+                            <prop oor:name="URL" oor:type="xs:string">
+                                <value>vnd.sun.star.script:claude_calc.py$analyze_selection?language=Python&amp;location=user:uno_packages</value>
+                            </prop>
+                            <prop oor:name="Title" oor:type="xs:string">
+                                <value>Claude: Analyze Selection</value>
+                            </prop>
+                            <prop oor:name="Target" oor:type="xs:string">
+                                <value>_self</value>
+                            </prop>
+                        </node>
+                        <node oor:name="N004" oor:op="replace">
+                            <prop oor:name="URL" oor:type="xs:string">
+                                <value>vnd.sun.star.script:claude_calc.py$explain_formula?language=Python&amp;location=user:uno_packages</value>
+                            </prop>
+                            <prop oor:name="Title" oor:type="xs:string">
+                                <value>Claude: Explain Formula</value>
+                            </prop>
+                            <prop oor:name="Target" oor:type="xs:string">
+                                <value>_self</value>
+                            </prop>
+                        </node>
+                        <node oor:name="N005" oor:op="replace">
+                            <prop oor:name="URL" oor:type="xs:string">
+                                <value>vnd.sun.star.script:claude_calc.py$configure_api_key?language=Python&amp;location=user:uno_packages</value>
+                            </prop>
+                            <prop oor:name="Title" oor:type="xs:string">
+                                <value>Claude: Configure API Key...</value>
+                            </prop>
+                            <prop oor:name="Target" oor:type="xs:string">
+                                <value>_self</value>
+                            </prop>
+                        </node>
                     </node>
                 </node>
             </node>
         </node>
 
-        <!-- Toolbar integration -->
+        <!-- Toolbar button -->
         <node oor:name="OfficeToolBar">
             <node oor:name="com.anthropic.claude.toolbar" oor:op="replace">
                 <node oor:name="t1" oor:op="replace">
@@ -63,7 +83,7 @@
                         <value>vnd.sun.star.script:claude_calc.py$open_claude_sidebar?language=Python&amp;location=user:uno_packages</value>
                     </prop>
                     <prop oor:name="Title" oor:type="xs:string">
-                        <value xml:lang="en">Claude</value>
+                        <value>Claude Chat</value>
                     </prop>
                     <prop oor:name="Target" oor:type="xs:string">
                         <value>_self</value>
